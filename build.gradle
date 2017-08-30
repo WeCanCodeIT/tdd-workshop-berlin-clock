@@ -1,0 +1,23 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	testCompile 'junit:junit:4.+',
+		'org.hamcrest:hamcrest-all:1.+'
+}
+
+task buildSrcFolders {
+
+	description 'Builds default source folders'
+
+	doLast {
+		mkdir("src/main/java")
+		mkdir("src/test/java")
+	}
+}
+
+tasks.eclipse.dependsOn buildSrcFolders
